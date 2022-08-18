@@ -1,0 +1,15 @@
+{
+  "name": "Aragon Token Distribution",
+  "item": {
+    "address": "ethereumAddress",
+    "amount": "scoreRealized",
+    "token": "context.token"
+  },
+  "operate": [
+    {
+      "run": "return (val / context.totalPraiseScore) * context.budget;",
+      "on": "amount"
+    }
+  ],
+  "each": "item.token = context.token; return item;"
+}
