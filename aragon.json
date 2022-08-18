@@ -1,5 +1,9 @@
 {
   "name": "Aragon Token Distribution",
+  "context": {
+    "budget": "number",
+    "token": "string"
+  },
   "item": {
     "address": "ethereumAddress",
     "amount": "scoreRealized",
