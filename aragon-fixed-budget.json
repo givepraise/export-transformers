@@ -18,5 +18,5 @@
     "budget": "number",
     "token": "string"
   },
-  "filterEmpty": "address" 
+  "filterColumn": "address" 
 }
