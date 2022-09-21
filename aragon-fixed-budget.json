@@ -15,8 +15,8 @@
     "each": "(function each(item, context) { item.tokenName = context.token; return item; })(item, context)"
   },
   "context": {
-    "filterEmptyEthereumAddresses": "boolean",
     "budget": "number",
     "token": "string"
-  }
+  },
+  "filterEmpty": "address" 
 }
