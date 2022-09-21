@@ -1,5 +1,5 @@
 {
-  "name": "Fixed budget Aragon token distribution",
+  "name": "Aragon Fixed Budget",
   "map": {
     "item": {
       "address": "ethereumAddress",
