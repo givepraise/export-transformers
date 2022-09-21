@@ -1,5 +1,5 @@
 {
-  "name": "Aragon Token Distribution",
+  "name": "Fixed budget Aragon token distribution",
   "map": {
     "item": {
       "address": "ethereumAddress",
@@ -15,6 +15,7 @@
     "each": "(function each(item, context) { item.tokenName = context.token; return item; })(item, context)"
   },
   "context": {
+    "filterEmptyEthereumAddresses": "boolean",
     "budget": "number",
     "token": "string"
   }
