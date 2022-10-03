@@ -18,5 +18,6 @@
     "budget": "number",
     "token": "string"
   },
-  "filterColumn": "address" 
+  "filterColumn": "address",
+  "includeCsvHeaderRow": false
 }
