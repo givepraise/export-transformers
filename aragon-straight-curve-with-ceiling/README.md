@@ -4,6 +4,8 @@ This distribution calculates the period budget using a straight curve with a cei
 
 File format: Aragon Transactions
 
+Simulate results here: [Observable - Straight curve with ceiling](https://observablehq.com/@kristofer/praise-straight-curve-with-ceiling)
+
 ![curve](curve.png)
 
 ## Context parameters
