@@ -50,3 +50,12 @@ interface PeriodDetailsGiverReceiverDto {
   userAccount: UserAccountDto;
 }
 ```
+
+## Context parameters
+
+In addition to the context parameters defined in the transformer and praise settings, the following parameters are also available:
+
+```javascript
+praiseItemsCount: number; // Total number of praise items in the period
+totalPraiseScore: number; // Total praise score in the period
+```
