@@ -1,0 +1,28 @@
+{
+  "name": "Aragon straight curve max",
+  "map": {
+    "item": {
+      "address": "ethereumAddress",
+      "amount": "scoreRealized",
+      "token": ""
+    },
+    "operate": [
+      {
+        "run": "((item, cutoff, ceiling, praiseItemsCount, totalPraiseScore) => { const budget = praiseItemsCount > cutoff ? ceiling : praiseItemsCount / cutoff * ceiling; return (item.amount / totalPraiseScore) * budget; })(item, cutoff, ceiling, praiseItemsCount, totalPraiseScore)",
+        "on": "amount"
+      },
+      {
+        "run": "token",
+        "on": "token"
+      }
+    ],
+    "each": "item"
+  },
+  "context": {
+    "ceiling": "number",
+    "cutoff": "number",
+    "token": "string"
+  },
+  "filterColumn": "address",
+  "includeCsvHeaderRow": false
+}

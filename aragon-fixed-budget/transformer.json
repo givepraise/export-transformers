@@ -1,18 +1,22 @@
 {
-  "name": "Aragon Fixed Budget",
+  "name": "Aragon fixed budget",
   "map": {
     "item": {
       "address": "ethereumAddress",
       "amount": "scoreRealized",
-      "tokenName": ""
+      "token": ""
     },
     "operate": [
       {
         "run": "(item.amount / totalPraiseScore) * budget",
         "on": "amount"
+      },
+      {
+        "run": "token",
+        "on": "token"
       }
     ],
-    "each": "(function each(item, context) { item.tokenName = context.token; return item; })(item, context)"
+    "each": "item"
   },
   "context": {
     "budget": "number",
