@@ -1,0 +1,35 @@
+{
+  "name": "Gnosis Safe, CSV Airdrop, Straight Curve with Ceiling",
+  "map": {
+    "item": {
+      "token_type": "",
+      "token_address": "",
+      "receiver": "ethereumAddress",
+      "amount": "scoreRealized",
+      "id": ""
+    },
+    "operate": [
+      {
+        "run": "tokenType",
+        "on": "token_type"
+      },
+      {
+        "run": "tokenAddress",
+        "on": "token_address"
+      },
+      {
+        "run": "((item, cutoff, ceiling, praiseItemsCount, totalPraiseScore) => { const budget = praiseItemsCount > cutoff ? ceiling : praiseItemsCount / cutoff * ceiling; return (item.amount / totalPraiseScore) * budget; })(item, cutoff, ceiling, praiseItemsCount, totalPraiseScore)",
+        "on": "amount"
+      }
+    ],
+    "each": "item"
+  },
+  "context": {
+    "ceiling": "number",
+    "cutoff": "number",
+    "tokenType": "string",
+    "tokenAddress": "string"
+  },
+  "filterColumn": "receiver",
+  "includeCsvHeaderRow": false
+}
