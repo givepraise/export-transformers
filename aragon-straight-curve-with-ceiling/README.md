@@ -2,11 +2,15 @@
 
 This distribution calculates the period budget using a straight curve with a ceiling. Few praise in a period means small distribution budget and vice versa.
 
-File format: Aragon Transactions
-
 Simulate results here: [Observable - Straight curve with ceiling](https://observablehq.com/@kristofer/praise-straight-curve-with-ceiling)
 
 ![curve](curve.png)
+
+### Export format
+
+File format: [Aragon Transactions](https://docs.evmcrispr.blossom.software/aragonOS/transactions) CSV
+
+The transactions app is a custom aragon app built by 1hive. It allows users to create a single DAO vote to transfer or mint tokens to multiple addresses.
 
 ## Context parameters
 
