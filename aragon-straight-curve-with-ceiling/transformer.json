@@ -2,21 +2,20 @@
   "name": "Aragon, Straight Curve with Ceiling",
   "map": {
     "item": {
-      "address": "ethereumAddress",
+      "address": "rewardsEthAddress",
       "amount": "scoreRealized",
       "token": ""
     },
     "operate": [
       {
-        "run": "((item, cutoff, ceiling, praiseItemsCount, totalPraiseScore) => { const budget = praiseItemsCount > cutoff ? ceiling : praiseItemsCount / cutoff * ceiling; return (item.amount / totalPraiseScore) * budget; })(item, cutoff, ceiling, praiseItemsCount, totalPraiseScore)",
+        "run": "(val, context) => { const budget = context.praiseItemsCount > context.cutoff ? context.ceiling : context.praiseItemsCount / context.cutoff * context.ceiling; return (val / context.totalPraiseScore) * budget; }",
         "on": "amount"
       },
       {
-        "run": "token",
+        "run": "(val, context) => context.token",
         "on": "token"
       }
-    ],
-    "each": "item"
+    ]
   },
   "context": {
     "ceiling": "number",

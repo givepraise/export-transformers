@@ -4,16 +4,11 @@ This repository contains transformers for creating custom Praise exports and tok
 
 Paste the url of the raw transformer file into the Custom Exports tab of the Praise settings to use.
 
-Praise custom exports use a slightly modified version of [node-json-transform](https://github.com/bozzltron/node-json-transform).
+For full reference on the transformer map format, see [ses-node-json-transform](https://github.com/kristoferlund/ses-node-json-transform).
 
 ## Transformer Schema
 
 ```javascript
-interface ExportTransformerOperateItem {
-  run: string;
-  on: string;
-}
-
 interface ExportTransformerMap {
   name: string;
   map: {
@@ -25,13 +20,37 @@ interface ExportTransformerMap {
   filterColumn: string;
   includeCsvHeaderRow?: boolean;
 }
+
+interface ExportTransformerOperateItem {
+  run: string;
+  on: string;
+}
 ```
+
+### ExportTransformerOperateItem
+
+`run` accepts a string with a function to be evaluated.
+
+- The function must return a value.
+- Function accepts two parameters: `val` and `context`.
+- Example: `(val) => val.toUpperCase()`;
+
+`on` accepts a string of the name of the property to run the function on.
 
 ## Input data
 
 Each item processed by the transformer contain the following info:
 
 ```javascript
+interface PeriodDetailsGiverReceiverDto {
+  _id: string;
+  praiseCount: number;
+  identityEthAddress?: string;
+  rewardsEthAddress?: string;
+  scoreRealized: number;
+  userAccount: UserAccountDto;
+}
+
 interface UserAccountDto {
   _id: string;
   user?: string;
@@ -40,14 +59,6 @@ interface UserAccountDto {
   nameRealized: string; // Jim
   avatarId?: string;
   platform: string; // 'DISCORD'
-}
-
-interface PeriodDetailsGiverReceiverDto {
-  _id: string;
-  praiseCount: number;
-  ethereumAddress?: string;
-  scoreRealized: number;
-  userAccount: UserAccountDto;
 }
 ```
 
@@ -58,4 +69,12 @@ In addition to the context parameters defined in the transformer and praise sett
 ```javascript
 praiseItemsCount: number; // Total number of praise items in the period
 totalPraiseScore: number; // Total praise score in the period
+```
+
+## Globals
+
+Since the transformers are evaluated in a secure sandbox, only the following globals are available:
+
+```
+Math
 ```
