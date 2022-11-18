@@ -4,25 +4,24 @@
     "item": {
       "token_type": "",
       "token_address": "",
-      "receiver": "ethereumAddress",
+      "receiver": "rewardsEthAddress",
       "amount": "scoreRealized",
       "id": ""
     },
     "operate": [
       {
-        "run": "tokenType",
+        "run": "(val, context) => context.tokenType",
         "on": "token_type"
       },
       {
-        "run": "tokenAddress",
+        "run": "(val, context) => context.tokenAddress",
         "on": "token_address"
       },
       {
-        "run": "((item, cutoff, ceiling, praiseItemsCount, totalPraiseScore) => { const budget = praiseItemsCount > cutoff ? ceiling : praiseItemsCount / cutoff * ceiling; return (item.amount / totalPraiseScore) * budget; })(item, cutoff, ceiling, praiseItemsCount, totalPraiseScore)",
+        "run": "(val, context) => { const budget = context.praiseItemsCount > context.cutoff ? context.ceiling : context.praiseItemsCount / context.cutoff * context.ceiling; return (val / context.totalPraiseScore) * budget; }",
         "on": "amount"
       }
-    ],
-    "each": "item"
+    ]
   },
   "context": {
     "ceiling": "number",
@@ -31,5 +30,5 @@
     "tokenAddress": "string"
   },
   "filterColumn": "receiver",
-  "includeCsvHeaderRow": false
+  "includeCsvHeaderRow": true
 }
